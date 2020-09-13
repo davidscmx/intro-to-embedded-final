@@ -10,9 +10,8 @@
 #*****************************************************************************
 
 # Add your Source files to this variable
-SRCS = main.c memory.c  
-
+SRCS = src/main.c src/memory.c src/stats.c src/course1.c src/data.c  
 
 # Add your include paths to this variable
-INCLUDES = -I../include/common/
+INCLUDES = -I./include/common/ -I./include/msp432/ -I./include/msp432/CMSIS
 

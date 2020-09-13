@@ -67,11 +67,11 @@ endif
 OBJS = $(SRCS:.c=.o)
 DEPS = $(OBJS:.o=.dep)  # one dependency file for each source
 
-$(DEPS): %.dep: %.c
-	$(CC) -M $(CFLAGS) $(INCLUDES) $< -MF $@
-
 $(TARGET): $(OBJS)
 	$(CC) $(OBJS) $(CFLAGS) $(INCLUDES) $(LDFLAGS) -o $(TARGET)
+
+$(DEPS): %.dep: %.c
+	$(CC) -M $(CFLAGS) $(INCLUDES) $< -MF $@
 
 $(OBJS): %.o: %.c
 	$(CC) -c $< $(CFLAGS) $(INCLUDES) -o $@
