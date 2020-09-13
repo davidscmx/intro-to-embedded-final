@@ -18,10 +18,7 @@
  * @date 30.10.2019
  *
  */
-
-#include <stdio.h>
 #include "stats.h"
-#include "platform.h"
 
 /* Size of the Data Set */
 #define SIZE (40)
@@ -50,9 +47,9 @@ void print_array(unsigned char *myArray, int size)
   #ifdef VERBOSE
   for (int i = 0; i < size; i++)
   {
-     printf("%d ",myArray[i]);
+     PRINTF("%d ",myArray[i]);
   }
-  printf("\n");
+  PRINTF("\n");
   #endif
 }
 

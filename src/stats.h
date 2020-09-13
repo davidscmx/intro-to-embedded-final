@@ -24,6 +24,7 @@
 #ifndef __STATS_H__
 #define __STATS_H__
 
+#include "platform.h"
 
 /**
  * @brief Prints relevant statistics of a given array.
