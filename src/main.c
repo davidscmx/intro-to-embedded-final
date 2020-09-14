@@ -18,6 +18,12 @@
  * @date April 1 2017
  *
  */
+#include <stdint.h>
+#include "course1.h"
+#include "platform.h"
+#include "memory.h"
+#include "data.h"
+#include "stats.h"
 
 int main(void) {
   #ifdef COURSE1
