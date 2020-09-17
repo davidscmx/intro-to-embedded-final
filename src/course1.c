@@ -19,10 +19,6 @@
 
 #include <stdint.h>
 #include "course1.h"
-#include "platform.h"
-#include "memory.h"
-#include "data.h"
-#include "stats.h"
 
 int8_t test_data1() {
   void * ptr;
@@ -31,10 +27,11 @@ int8_t test_data1() {
   int32_t value;
 
   PRINTF("\ntest_data1();\n");
-  ptr = (void*) reserve_words( DATA_SET_SIZE_W );
+  ptr = (int32_t*) reserve_words( DATA_SET_SIZE_W );
 
   if (! ptr )
   {
+    PRINTF("  test_data1 failed. Exiting. %d\n", num);
     return TEST_ERROR;
   }
 
