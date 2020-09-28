@@ -12,7 +12,7 @@
 #ifndef __DATA_H__
 #define __DATA_H__
 
-#include "platform.h"
+//#include "platform.h"
 #include <stdint.h>
 
 #define BASE_10 (10)
