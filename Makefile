@@ -54,6 +54,8 @@ ifeq ($(PLATFORM), HOST)
 endif
 
 # begin targets here
+
+# meaning of -c: compile but do not link
 %.o : %.c
 	$(CC) -c $^ $(CFLAGS) $(INCLUDES) -o $@
 

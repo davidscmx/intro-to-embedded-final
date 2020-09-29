@@ -9,7 +9,7 @@
 #define ONE_ASCII (49)
 #define ZERO_ASCII (48)
 
-static uint8_t* to_binary_str(int32_t data)
+static uint8_t to_binary_str(int32_t data, uint8_t *ptr)
 {
     uint8_t char_array[MAX_STR_SIZE];
     // Add null terminator to end of string
@@ -36,45 +36,47 @@ static uint8_t* to_binary_str(int32_t data)
         *(p + MAX_STR_SIZE-i) = ZERO_ASCII;        
       }
     }
-    uint8_t total_chars = MAX_STR_SIZE - last_one_position - 1; // -1 from the null terminator
     
-    uint8_t final_array[MAX_STR_SIZE];
-    for (uint8_t i=last_one_position; i < MAX_STR_SIZE-1; i++)
-    {
-      // start counting char when 
-      printf("%c", char_array[i]);
+    // -1 from the null terminator
+    uint8_t total_chars = MAX_STR_SIZE - last_one_position - 1; 
+    
+    for (uint8_t i=last_one_position, j = 0; i < MAX_STR_SIZE-1; i++, j++)
+    {  
+      *(ptr+j) = *(p+i);
     }
-    
+    *(ptr + total_chars+1) = '\0';
+
+    for (uint8_t i=0; i < total_chars;i++){
+      printf("%c",ptr[i]);
+    }
+    printf("nchars %d\n", total_chars);
     return total_chars;
 }
 
-static uint8_t* to_decimal_str(int32_t data)
-{
-
-}
-
-static uint8_t* to_hex_str(int32_t data)
-{
-
-}
+//static uint8_t* to_decimal_str(int32_t data)
+//{
+//  return NULL;
+//}
+//
+//static uint8_t* to_hex_str(int32_t data)
+//{
+//  return NULL;
+//}
 
 uint8_t my_itoa(int32_t data, uint8_t * ptr, uint32_t base){
-    switch(base){
-        case 2:
-            uint8_t n_chars = to_binary_str(data);
+    
+    uint8_t n_chars = 0;
+    switch(base)
+    {
+        case 2: ;
+            n_chars = to_binary_str(data, ptr);
             break;
-        case 10:
-            uint8_t* ptr = to_hex_str(data);
-            break;
-        case 16:
-            uint8_t* ptr = to_hex_str(data);
-            break;
-        default:
+        default: ;
             printf("Invalid base\n" );
             return 1;
     }
     
-    return 0;
+    return n_chars;
 }
 
 int32_t my_atoi(uint8_t * ptr, uint8_t digits, uint32_t base){
@@ -84,6 +86,12 @@ int32_t my_atoi(uint8_t * ptr, uint8_t digits, uint32_t base){
 int main(){
 
     uint8_t my_str[MAX_BUFFER];
-    my_str_ptr = to_binary_str(10);
+
+    uint8_t nchars = to_binary_str(10, my_str);
+    nchars = to_binary_str(1, my_str);
+    nchars = to_binary_str(-1, my_str);
+    nchars = to_binary_str(32, my_str);
+    nchars = to_binary_str(64, my_str);
+    return nchars;
 
 }
